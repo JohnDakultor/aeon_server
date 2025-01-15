@@ -4,6 +4,7 @@ import bookingRoutes from "./routes/BookingRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import manageBookingRoutes from "./routes/ManageBookingRoutes.js";
 import manageRoomRoutes from "./routes/ManageRoomsRoute.js";
+import dataRoutes from "./routes/DataRoutes.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use("/api", bookingRoutes);
 app.use("/api", authRoutes);
 app.use("/api", manageBookingRoutes);
 app.use("/api", manageRoomRoutes);
+app.use("/api", dataRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
