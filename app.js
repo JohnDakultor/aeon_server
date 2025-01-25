@@ -6,6 +6,7 @@ import manageBookingRoutes from "./routes/ManageBookingRoutes.js";
 import manageRoomRoutes from "./routes/ManageRoomsRoute.js";
 import dataRoutes from "./routes/DataRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import fullyBooked from "./routes/FullBookingRoutes.js";
 import http from 'http';
 import { Server } from 'socket.io';
 import { storeMessage } from "./services/chatService.js";
@@ -77,6 +78,7 @@ app.use("/api", manageBookingRoutes);
 app.use("/api", manageRoomRoutes);
 app.use("/api", dataRoutes);
 app.use("/api", chatRoutes);
+app.use("/api", fullyBooked);
 
 
 

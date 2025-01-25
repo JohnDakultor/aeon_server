@@ -7,25 +7,26 @@ export const getAllRooms = async() => {
 }
 
 export const addRoom = async (roomData) => {
-  const { name, capacity, price, available } = roomData;
+  const { name, capacity, price, available, room_number } = roomData;
   const { rows } = await pool.query(
-    `INSERT INTO rooms (name, capacity, price, available) 
-     VALUES ($1, $2, $3, $4) RETURNING *`,
-    [name, capacity, price, available]
+    `INSERT INTO rooms (name, capacity, price, available, room_number) 
+     VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+    [name, capacity, price, available, room_number]
   );
   return rows[0];
 }
 
 export const updateRoom = async(id, roomData) => {
-  const { name, capacity, price, available } = roomData;
+  const { name, capacity, price, available, room_number } = roomData;
   const { rows } = await pool.query(
     `UPDATE rooms SET 
        name = $1, 
        capacity = $2, 
        price = $3, 
-       available = $4 
-     WHERE id = $5 RETURNING *`,
-    [name, capacity, price, available, id]
+       available = $4,
+       room_number = $5
+     WHERE id = $6 RETURNING *`,
+    [name, capacity, price, available, room_number, id]
   );
 
   if (!rows[0]) {
